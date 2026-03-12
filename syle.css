@@ -1,0 +1,41 @@
+/* Efeito de Scanner NERV */
+.profile-card::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: rgba(0, 255, 65, 0.5);
+    box-shadow: 0 0 15px #00ff41;
+    filter: blur(2px);
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+/* Efeito de glitch no nome ao passar o mouse */
+h1:hover {
+    text-shadow: 2px 0 #ff6600, -2px 0 #00ff41;
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* Estilo da Bio com cursor piscando */
+#bio {
+    min-height: 40px;
+    border-right: 2px solid #00ff41;
+    display: inline;
+    white-space: pre-wrap;
+}

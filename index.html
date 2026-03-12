@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Meu site - EVA 01</title>
+    <style>
+        /* --- TUDO DO STYLE.CSS AQUI --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0d0216;
+            background-image: linear-gradient(135deg, #1a0b2e 0%, #4b0082 50%, #00ff41 100%);
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .profile-card {
+            background: rgba(20, 10, 30, 0.85);
+            backdrop-filter: blur(12px);
+            border: 2px solid #00ff41;
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            width: 350px;
+            color: #ffffff;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #00ff41;
+            margin-bottom: 20px;
+            object-fit: cover;
+            animation: pulsar 2s infinite ease-in-out;
+            transition: transform 0.6s ease;
+        }
+
+        .profile-img:hover {
+            transform: rotate(360deg) scale(1.1);
+            border-color: #ff6600;
+        }
+
+        @keyframes pulsar {
+            0% { transform: scale(1); box-shadow: 0 0 10px #00ff41; }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px #00ff41; }
+            100% { transform: scale(1); box-shadow: 0 0 10px #00ff41; }
+        }
+
+        h1 { font-size: 1.8rem; margin-bottom: 10px; }
+        #bio { color: #cccccc; margin-bottom: 25px; font-size: 0.95rem; }
+
+        #editBtn {
+            background: #00ff41;
+            color: #0d0216;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        #editBtn:hover { background: #ff6600; box-shadow: 0 0 20px #ff6600; }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <img src="https://64.media.tumblr.com/8244d8ebf6f9ad4b96d6b44a88787cbb/tumblr_pz8pgpYTt71yuk3dso9_r2_250.png" 
+             alt="foto de perfil" class="profile-img">
+        <h1 id="username">Luiz Henrique</h1>
+        <p id="bio">Desenvolvedor Front-End apaixonado por tecnologia e design</p>
+        <button id="editBtn">Editar Perfil</button>
+    </div>
+
+    <script>
+        /* --- TUDO DO SCRIPT.JS AQUI --- */
+        document.getElementById('editBtn').addEventListener('click', () => {
+            const novoNome = prompt("Seu Nome:", document.getElementById('username').innerText);
+            const novaBio = prompt("Sua Bio:", document.getElementById('bio').innerText);
+            if (novoNome) document.getElementById('username').innerText = novoNome;
+            if (novaBio) document.getElementById('bio').innerText = novaBio;
+        });
+    </script> 
+</body>
+</html>
