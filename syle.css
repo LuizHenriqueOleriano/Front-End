@@ -1,41 +1,130 @@
-/* Efeito de Scanner NERV */
+/* Importando fontes de alta performance */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@800&display=swap');
+
+:root {
+    --primary: #00ff41;   /* Verde Neon */
+    --secondary: #9d00ff; /* Roxo Neon */
+    --bg-light: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.65);
+    --text-main: #0f172a;
+    --text-dim: #64748b;
+}
+
+/* Base do Card - Light Glassmorphism */
+.profile-card {
+    position: relative;
+    width: 360px;
+    padding: 50px 30px;
+    text-align: center;
+    border-radius: 32px; /* Borda mais moderna e suave */
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-main);
+    
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    
+    /* Sombra colorida sutil para profundidade */
+    box-shadow: 0 25px 50px -12px rgba(157, 0, 255, 0.08), 
+                0 0 15px rgba(0, 255, 65, 0.03);
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Scanner de Dados - Versão Roxo Neon Soft */
 .profile-card::after {
     content: "";
     position: absolute;
     top: -100%;
     left: 0;
     width: 100%;
-    height: 10px;
-    background: rgba(0, 255, 65, 0.5);
-    box-shadow: 0 0 15px #00ff41;
-    filter: blur(2px);
-    animation: scan 4s linear infinite;
+    height: 140px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(157, 0, 255, 0.05) 50%,
+        var(--secondary) 100%
+    );
+    opacity: 0.2;
+    animation: scan 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+    z-index: 1;
 }
 
 @keyframes scan {
-    0% { top: -10%; }
-    100% { top: 110%; }
+    0% { top: -100%; }
+    100% { top: 120%; }
 }
 
-/* Efeito de glitch no nome ao passar o mouse */
-h1:hover {
-    text-shadow: 2px 0 #ff6600, -2px 0 #00ff41;
-    animation: glitch 0.3s infinite;
+/* Hover: Transição de cor Verde para Roxo */
+.profile-card:hover {
+    transform: translateY(-12px) scale(1.01);
+    border-color: var(--secondary);
+    box-shadow: 0 40px 70px -15px rgba(157, 0, 255, 0.2);
 }
 
-@keyframes glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
+/* Imagem com Anel Neon Adaptativo */
+.profile-img {
+    position: relative;
+    z-index: 2;
+    width: 130px;
+    height: 130px;
+    border-radius: 40px; /* Estilo 'Squircle' moderno */
+    padding: 4px;
+    background: white;
+    border: 2.5px solid var(--primary);
+    object-fit: cover;
+    transition: all 0.5s ease;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(0, 255, 65, 0.1);
 }
 
-/* Estilo da Bio com cursor piscando */
+.profile-card:hover .profile-img {
+    border-color: var(--secondary);
+    box-shadow: 0 0 30px rgba(157, 0, 255, 0.25);
+    transform: rotate(-4deg);
+    border-radius: 50%; /* Transição de forma no hover */
+}
+
+/* Título com correção do gradiente */
+h1 {
+    position: relative;
+    z-index: 2;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--text-main) 40%, var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
 #bio {
-    min-height: 40px;
-    border-right: 2px solid #00ff41;
-    display: inline;
-    white-space: pre-wrap;
+    position: relative;
+    z-index: 2;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Cursor Estilo Hacker Moderno */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 2px; /* Cursor sublinhado é mais moderno que o bloco */
+    background-color: var(--secondary);
+    box-shadow: 0 0 10px var(--secondary);
+    margin-left: 4px;
+    animation: blink 0.8s infinite;
+    vertical-align: baseline;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
 }
